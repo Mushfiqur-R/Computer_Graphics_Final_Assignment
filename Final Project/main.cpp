@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <GL/glut.h>
+#include <math.h>
 
 
 void initGL() {
@@ -105,7 +106,7 @@ void UndergroundWall()
 void Road()
 {
     glBegin(GL_POLYGON); //black road
-	glColor3ub(0,0,0);
+	glColor3ub(95,95,95);
 	glVertex2f(0,4);//W1
 	glVertex2f(19,4);//Z1
 	glVertex2f(19,6);//B2
@@ -144,6 +145,7 @@ void Road()
 	glVertex2f(16,5);//O2
 	glEnd();
 }
+void drawWheel(float centerX, float centerY, float radius);
 void Car()
 {
     glBegin(GL_POLYGON);
@@ -181,8 +183,22 @@ void Car()
 	glVertex2f(15.46,5.41);//M3
 	glVertex2f(14.47,5.41);//N3
 	glEnd();
+	glColor3ub(0, 0, 0); // Set wheel color (black)
+    drawWheel(12.84,4.73,0.37); // Left wheel (center at 13.0, 4.74)
+    drawWheel(15.93,4.73,0.35); // Right wheel (center at 15.0, 4.74)
 
-
+}
+void drawWheel(float centerX, float centerY, float radius) {
+    int num_segments = 100;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(centerX, centerY);
+    for (int i = 0; i <= num_segments; i++) {
+        float theta = 2.0f * 3.1415926f * float(i) / float(num_segments);
+        float x = radius * cosf(theta);
+        float y = radius * sinf(theta);
+        glVertex2f(x + centerX, y + centerY);
+    }
+    glEnd();
 }
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
