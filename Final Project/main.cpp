@@ -271,6 +271,15 @@ void Metro()
 
 	glEnd();
 
+	glBegin(GL_LINES);
+	{
+	    glLineWidth(2.0);
+	    glColor3ub(0,0,0);
+	     glVertex2f(5,2.21);//V5
+	glVertex2f(5,0.22);//W5
+	glEnd();
+
+}
 }
 void trainwindow()
 {
@@ -453,6 +462,63 @@ void Home3()
 	glEnd();
   glPopMatrix();
 }
+void Home4()
+{
+    glPushMatrix();
+    glTranslatef(15.0f,6.5f,0.0f);
+    glScalef(0.6f,0.6f,0.0f);
+  //   glClear(GL_COLOR_BUFFER_BIT);
+    glColor3ub(255,156,85);
+    glBegin(GL_POLYGON);
+        glVertex2f(1.0f, 0.0f); //a
+        glVertex2f(1.0f, 7.0f); // b
+        glVertex2f(6.0f, 7.0f); // c
+        glVertex2f(6.0f, 0.0f); // d
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3f(0.5f, 0.25f, 0.0f);
+        glVertex2f(3,0); // e
+        glVertex2f(2.98, 1.28); // f
+        glVertex2f(4, 1.28); // g
+        glVertex2f(4,0); // h
+    glEnd();
+
+    // Set color for the windows
+    glColor3f(0.2f, 0.6f, 1.0f);
+   //window
+    for (int i = 0; i < 5; ++i) {
+        float y = 0.5f + i * 1.2f; // Calculate y position for each floor
+
+        // Left window
+        glBegin(GL_POLYGON);
+            glVertex2f(1.48f, y); // l
+            glVertex2f(2.42f, y); // k
+            glVertex2f(2.42f, y + 0.8f); //j
+            glVertex2f(1.48f, y + 0.8f); // i
+        glEnd();
+
+        // Right window
+        glBegin(GL_POLYGON);
+            glVertex2f(4.57, y); // B1
+            glVertex2f(5.51, y); // d1
+            glVertex2f(5.51, y + 0.8f); // c1
+            glVertex2f(4.57, y + 0.8f); // a1
+        glEnd();
+    }
+  glPopMatrix();
+}
+void Sky()
+{
+     glBegin(GL_POLYGON);
+     glColor3ub(135, 206, 235);
+        glVertex2f(0,13); //A
+        glVertex2f(19,13); // D
+        glVertex2f(19,6.56); // p3
+        glVertex2f(0,6.6); // o3
+    glEnd();
+
+}
 //void Leaf(float centerX, float centerY, float radius);
 void Leaf(float centerX, float centerY, float radius)
 {
@@ -488,7 +554,26 @@ void Tree()
    Leaf(14.26,8.44,0.50);
    glPopMatrix();
 }
-
+void Tree2()
+{
+     glPushMatrix();
+    glTranslatef(-8.0f,-0.9f,0.0f);
+    glScalef(1.1f,1.1f,0.0f);
+    glBegin(GL_POLYGON);
+	 glColor3ub(85,51,17);
+	 glVertex2f(14.08,6.57);//D6
+	glVertex2f(14.21,7.25);//C6
+	glVertex2f(14.13,8.01);//B6
+	glVertex2f(14.6,8);//E6
+	glVertex2f(14.47,7.23);//F6
+	glVertex2f(14.6,6.57);//G6
+	glEnd();
+	Leaf(14.3,7.81,0.42);
+   Leaf(14,8,0.50);
+   Leaf(14.53,8.08,0.45);
+   Leaf(14.26,8.44,0.50);
+   glPopMatrix();
+}
 
 void Cloudcircle(float centerX, float centerY, float radius)
 {
@@ -510,6 +595,453 @@ void Cloud()
    Cloudcircle(14,12,0.65);
    Cloudcircle(14.75,12.03,0.60);
 }
+void Lamppost()
+{
+     glPushMatrix();
+    glTranslatef(-5.0f, 6.0f, 0.0f);
+	glScalef(0.4f, 0.4f, 0.0f);
+    glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+	glVertex2f(16.50f, 0.0f);//A
+	glVertex2f(17.5f, 0.0f);//C
+
+	glVertex2f(17.2f, 1.0f);//E
+	glVertex2f(16.8f, 1.0f);//D
+		glVertex2f(16.5f, 0.0f);//A
+
+glEnd();
+    glBegin(GL_POLYGON);
+	glColor3ub(  85, 66, 26    );
+
+	glVertex2f(16.8f, 1.0f);//D
+	glVertex2f(16.84f, 5.0f);//B
+
+	glVertex2f(16.88f, 5.16f);//G
+	glVertex2f(17.11f, 5.16f);//H
+		glVertex2f(17.16f, 5.0f);//F
+		glVertex2f(17.2f, 1.0f);//E
+		glVertex2f(16.8f, 1.0f);//D
+
+glEnd();
+   glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+
+	glVertex2f(16.88f, 5.16f);//G
+	glVertex2f(17.11f, 5.16f);//H
+	glVertex2f(17.31f, 5.4f);//J
+	glVertex2f(16.69f, 5.4f);//I
+	glVertex2f(16.88f, 5.16f);//G
+
+glEnd();
+
+    glBegin(GL_POLYGON);
+	glColor3ub(   249, 244, 90     );//Bulb
+
+    glVertex2f(16.69f, 5.4f);//I
+	glVertex2f(17.31f, 5.4f);//J
+	glVertex2f(17.5f, 6.3f);//L
+	glVertex2f(16.5f, 6.3f);//K
+    glVertex2f(16.69f, 5.4f);//I
+glEnd();
+
+    glBegin(GL_LINE_LOOP);// to create border
+
+   glColor3f(0.0f, 0.0f, 0.0f); // BLACK
+      glVertex2f(16.69f, 5.4f);//I
+	glVertex2f(17.31f, 5.4f);//J
+	glVertex2f(17.5f, 6.3f);//L
+	glVertex2f(16.5f, 6.3f);//K
+    glVertex2f(16.69f, 5.4f);//I
+	glEnd();
+
+
+    glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+	glVertex2f(16.4f, 6.3f);//V
+  	glVertex2f(17.6f, 6.3f);//W
+  	glVertex2f(17.28f, 6.7f);//N
+  	glVertex2f(16.75f, 6.7f);//M
+  	glVertex2f(16.4f, 6.3f);//V
+
+ glEnd();
+   glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+	glVertex2f(16.94f, 6.7f);//O
+  	glVertex2f(17.11f, 6.7f);//T
+  	glVertex2f(17.031f, 7.0f);//U
+
+ glEnd();
+ glBegin(GL_LINES);
+	glColor3ub(   0,0,0  );
+
+	glVertex2f(16.71f, 6.3f);//P
+  	glVertex2f(16.94f, 5.4f);//Q
+  	glVertex2f(17.25f, 6.29f);//R
+  	glVertex2f(17.09f, 5.4f);//S
+
+ glEnd();
+
+glPopMatrix();
+
+
+}
+void Lamppost2()
+{
+    glPushMatrix();
+    glTranslatef(1.7f, 6.0f, 0.0f);
+	glScalef(0.4f, 0.4f, 0.0f);
+    glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+	glVertex2f(16.50f, 0.0f);//A
+	glVertex2f(17.5f, 0.0f);//C
+
+	glVertex2f(17.2f, 1.0f);//E
+	glVertex2f(16.8f, 1.0f);//D
+		glVertex2f(16.5f, 0.0f);//A
+
+glEnd();
+    glBegin(GL_POLYGON);
+	glColor3ub(  85, 66, 26    );
+
+	glVertex2f(16.8f, 1.0f);//D
+	glVertex2f(16.84f, 5.0f);//B
+
+	glVertex2f(16.88f, 5.16f);//G
+	glVertex2f(17.11f, 5.16f);//H
+		glVertex2f(17.16f, 5.0f);//F
+		glVertex2f(17.2f, 1.0f);//E
+		glVertex2f(16.8f, 1.0f);//D
+
+glEnd();
+   glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+
+	glVertex2f(16.88f, 5.16f);//G
+	glVertex2f(17.11f, 5.16f);//H
+	glVertex2f(17.31f, 5.4f);//J
+	glVertex2f(16.69f, 5.4f);//I
+	glVertex2f(16.88f, 5.16f);//G
+
+glEnd();
+
+    glBegin(GL_POLYGON);
+	glColor3ub(   249, 244, 90     );//Bulb
+
+    glVertex2f(16.69f, 5.4f);//I
+	glVertex2f(17.31f, 5.4f);//J
+	glVertex2f(17.5f, 6.3f);//L
+	glVertex2f(16.5f, 6.3f);//K
+    glVertex2f(16.69f, 5.4f);//I
+glEnd();
+
+    glBegin(GL_LINE_LOOP);// to create border
+
+   glColor3f(0.0f, 0.0f, 0.0f); // BLACK
+      glVertex2f(16.69f, 5.4f);//I
+	glVertex2f(17.31f, 5.4f);//J
+	glVertex2f(17.5f, 6.3f);//L
+	glVertex2f(16.5f, 6.3f);//K
+    glVertex2f(16.69f, 5.4f);//I
+	glEnd();
+
+
+    glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+	glVertex2f(16.4f, 6.3f);//V
+  	glVertex2f(17.6f, 6.3f);//W
+  	glVertex2f(17.28f, 6.7f);//N
+  	glVertex2f(16.75f, 6.7f);//M
+  	glVertex2f(16.4f, 6.3f);//V
+
+ glEnd();
+   glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+	glVertex2f(16.94f, 6.7f);//O
+  	glVertex2f(17.11f, 6.7f);//T
+  	glVertex2f(17.031f, 7.0f);//U
+
+ glEnd();
+ glBegin(GL_LINES);
+	glColor3ub(   0,0,0  );
+
+	glVertex2f(16.71f, 6.3f);//P
+  	glVertex2f(16.94f, 5.4f);//Q
+  	glVertex2f(17.25f, 6.29f);//R
+  	glVertex2f(17.09f, 5.4f);//S
+
+ glEnd();
+
+glPopMatrix();
+
+
+}
+void Lamppost3()
+{
+     glPushMatrix();
+    glTranslatef(9.0f, 6.0f, 0.0f);
+	glScalef(0.4f, 0.4f, 0.0f);
+    glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+	glVertex2f(16.50f, 0.0f);//A
+	glVertex2f(17.5f, 0.0f);//C
+
+	glVertex2f(17.2f, 1.0f);//E
+	glVertex2f(16.8f, 1.0f);//D
+		glVertex2f(16.5f, 0.0f);//A
+
+glEnd();
+    glBegin(GL_POLYGON);
+	glColor3ub(  85, 66, 26    );
+
+	glVertex2f(16.8f, 1.0f);//D
+	glVertex2f(16.84f, 5.0f);//B
+
+	glVertex2f(16.88f, 5.16f);//G
+	glVertex2f(17.11f, 5.16f);//H
+		glVertex2f(17.16f, 5.0f);//F
+		glVertex2f(17.2f, 1.0f);//E
+		glVertex2f(16.8f, 1.0f);//D
+
+glEnd();
+   glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+
+	glVertex2f(16.88f, 5.16f);//G
+	glVertex2f(17.11f, 5.16f);//H
+	glVertex2f(17.31f, 5.4f);//J
+	glVertex2f(16.69f, 5.4f);//I
+	glVertex2f(16.88f, 5.16f);//G
+
+glEnd();
+
+    glBegin(GL_POLYGON);
+	glColor3ub(   249, 244, 90     );//Bulb
+
+    glVertex2f(16.69f, 5.4f);//I
+	glVertex2f(17.31f, 5.4f);//J
+	glVertex2f(17.5f, 6.3f);//L
+	glVertex2f(16.5f, 6.3f);//K
+    glVertex2f(16.69f, 5.4f);//I
+glEnd();
+
+    glBegin(GL_LINE_LOOP);// to create border
+
+   glColor3f(0.0f, 0.0f, 0.0f); // BLACK
+      glVertex2f(16.69f, 5.4f);//I
+	glVertex2f(17.31f, 5.4f);//J
+	glVertex2f(17.5f, 6.3f);//L
+	glVertex2f(16.5f, 6.3f);//K
+    glVertex2f(16.69f, 5.4f);//I
+	glEnd();
+
+
+    glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+	glVertex2f(16.4f, 6.3f);//V
+  	glVertex2f(17.6f, 6.3f);//W
+  	glVertex2f(17.28f, 6.7f);//N
+  	glVertex2f(16.75f, 6.7f);//M
+  	glVertex2f(16.4f, 6.3f);//V
+
+ glEnd();
+   glBegin(GL_POLYGON);
+	glColor3ub(   85, 66, 26    );
+
+	glVertex2f(16.94f, 6.7f);//O
+  	glVertex2f(17.11f, 6.7f);//T
+  	glVertex2f(17.031f, 7.0f);//U
+
+ glEnd();
+ glBegin(GL_LINES);
+	glColor3ub(   0,0,0  );
+
+	glVertex2f(16.71f, 6.3f);//P
+  	glVertex2f(16.94f, 5.4f);//Q
+  	glVertex2f(17.25f, 6.29f);//R
+  	glVertex2f(17.09f, 5.4f);//S
+
+ glEnd();
+
+glPopMatrix();
+
+
+}
+void bench(){
+
+    glPushMatrix();
+    /*Transalation*/
+    glTranslatef(3.5f, 6.2f, 0.0f);
+    /*Scaling*/
+	glScalef(0.3f, 0.3f, 0.0f);
+
+    glBegin(GL_POLYGON);
+	glColor3ub(   180, 133, 37    );
+
+	glVertex2f(12.0f, 0.6f);//A
+	glVertex2f(16.0f, 0.6f);//B
+
+	glVertex2f(15.5f, 1.0f);//F
+	glVertex2f(12.5f, 1.0f);//E
+		glVertex2f(12.0f, 0.6f);//A
+glEnd();
+glBegin(GL_POLYGON);
+	glColor3ub(  180, 133, 37    );
+
+	glVertex2f(15.5f, 1.0f);//F
+	glVertex2f(12.5f, 1.0f);//E
+	glVertex2f(12.5f, 2.0f);//G
+	glVertex2f(15.5f, 2.0f);//H
+    glVertex2f(15.5f, 1.0f);//F
+glEnd();
+glBegin(GL_POLYGON);
+	glColor3ub( 0,0,0  );
+
+	glVertex2f(12.2f, 0.0f);//J
+	glVertex2f(12.4f, 0.0f);//K
+	glVertex2f(12.4f, 0.6f);//C
+	glVertex2f(12.2f, 0.6f);//I
+    glVertex2f(12.2f, 0.0f);//J
+glEnd();
+glBegin(GL_POLYGON);
+	glColor3ub( 0,0,0  );
+
+	glVertex2f(12.5f, 0.28f);//R
+	glVertex2f(12.65f, 0.28f);//S
+	glVertex2f(12.65f, 0.6f);//T
+	glVertex2f(12.5f, 0.6f);//\Q
+    glVertex2f(12.5f, 0.28f);//R
+glEnd();
+glBegin(GL_POLYGON);
+	glColor3ub(  0,0,0   );
+
+	glVertex2f(15.6f, 0.0f);//L
+	glVertex2f(15.8f,0.0f);//N
+	glVertex2f(15.8f, 0.6f);//M
+	glVertex2f(15.6f,  0.6f);//D
+    glVertex2f(15.6f, 0.0f);//L
+glEnd();
+glBegin(GL_POLYGON);
+	glColor3ub(    0,0,0   );
+
+	glVertex2f(15.35f, 0.3f);//W
+	glVertex2f(15.5f,0.3f);//Z
+	glVertex2f(15.5f, 0.6f);//U
+	glVertex2f(15.35f,  0.6f);//V
+    glVertex2f(15.35f, 0.0f);//W
+glEnd();
+glBegin(GL_LINES);
+	glColor3ub(  135, 111, 82 );
+
+	glVertex2f(15.5f, 1.0f);//F
+	glVertex2f(12.5f, 1.0f);//E
+
+glEnd();
+
+glPopMatrix();
+}
+
+void bench2(){
+
+    glPushMatrix();
+    /*Transalation*/
+    glTranslatef(8.0f, 6.2f, 0.0f);
+    /*Scaling*/
+	glScalef(0.3f, 0.3f, 0.0f);
+
+    glBegin(GL_POLYGON);
+	glColor3ub(180, 133, 37);
+
+	glVertex2f(12.0f, 0.6f);//A
+	glVertex2f(16.0f, 0.6f);//B
+
+	glVertex2f(15.5f, 1.0f);//F
+	glVertex2f(12.5f, 1.0f);//E
+		glVertex2f(12.0f, 0.6f);//A
+glEnd();
+glBegin(GL_POLYGON);
+	glColor3ub(  180, 133, 37    );
+
+	glVertex2f(15.5f, 1.0f);//F
+	glVertex2f(12.5f, 1.0f);//E
+	glVertex2f(12.5f, 2.0f);//G
+	glVertex2f(15.5f, 2.0f);//H
+    glVertex2f(15.5f, 1.0f);//F
+glEnd();
+glBegin(GL_POLYGON);
+	glColor3ub( 0,0,0  );
+
+	glVertex2f(12.2f, 0.0f);//J
+	glVertex2f(12.4f, 0.0f);//K
+	glVertex2f(12.4f, 0.6f);//C
+	glVertex2f(12.2f, 0.6f);//I
+    glVertex2f(12.2f, 0.0f);//J
+glEnd();
+glBegin(GL_POLYGON);
+	glColor3ub( 0,0,0  );
+
+	glVertex2f(12.5f, 0.28f);//R
+	glVertex2f(12.65f, 0.28f);//S
+	glVertex2f(12.65f, 0.6f);//T
+	glVertex2f(12.5f, 0.6f);//\Q
+    glVertex2f(12.5f, 0.28f);//R
+glEnd();
+glBegin(GL_POLYGON);
+	glColor3ub(  0,0,0   );
+
+	glVertex2f(15.6f, 0.0f);//L
+	glVertex2f(15.8f,0.0f);//N
+	glVertex2f(15.8f, 0.6f);//M
+	glVertex2f(15.6f,  0.6f);//D
+    glVertex2f(15.6f, 0.0f);//L
+glEnd();
+glBegin(GL_POLYGON);
+	glColor3ub(    0,0,0   );
+
+	glVertex2f(15.35f, 0.3f);//W
+	glVertex2f(15.5f,0.3f);//Z
+	glVertex2f(15.5f, 0.6f);//U
+	glVertex2f(15.35f,  0.6f);//V
+    glVertex2f(15.35f, 0.0f);//W
+glEnd();
+glBegin(GL_LINES);
+	glColor3ub(  135, 111, 82 );
+
+	glVertex2f(15.5f, 1.0f);//F
+	glVertex2f(12.5f, 1.0f);//E
+
+glEnd();
+
+glPopMatrix();
+}
+void Suncircle(float centerX, float centerY, float radius)
+{
+    glColor3ub(255, 234, 0);
+    int num_segments = 100;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(centerX, centerY);
+    for (int i = 0; i <= num_segments; i++) {
+        float theta = 2.0f * 3.1415926f * float(i) / float(num_segments);
+        float x = radius * cosf(theta);
+        float y = radius * sinf(theta);
+        glVertex2f(x + centerX, y + centerY);
+    }
+    glEnd();
+}
+void Sun()
+{
+    Suncircle(16.85,11.86,0.75);
+}
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
     TrainLineground();
@@ -521,19 +1053,23 @@ void display() {
     underground_light();
     Metro();
     trainwindow();
+    Sky();
     Home();
     Home2();
     Home3();
-  Cloud();
+    Home4();
+   Cloud();
    Tree();
-
-
+   Tree2();
+   Lamppost();
+    bench();
+   Lamppost2();
+   Lamppost3();
+   bench2();
+   Sun();
 
 	glFlush();
 }
-
-
-
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitWindowSize(1000, 700);
