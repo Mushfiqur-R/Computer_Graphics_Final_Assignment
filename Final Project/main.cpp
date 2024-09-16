@@ -145,7 +145,19 @@ void Road()
 	glVertex2f(16,5);//O2
 	glEnd();
 }
-void drawWheel(float centerX, float centerY, float radius);
+//void drawWheel(float centerX, float centerY, float radius);
+void drawWheel(float centerX, float centerY, float radius) {
+    int num_segments = 100;
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(centerX, centerY);
+    for (int i = 0; i <= num_segments; i++) {
+        float theta = 2.0f * 3.1415926f * float(i) / float(num_segments);
+        float x = radius * cosf(theta);
+        float y = radius * sinf(theta);
+        glVertex2f(x + centerX, y + centerY);
+    }
+    glEnd();
+}
 void Car()
 {
     glBegin(GL_POLYGON);
@@ -188,17 +200,25 @@ void Car()
     drawWheel(15.93,4.73,0.35); // Right wheel (center at 15.0, 4.74)
 
 }
-void drawWheel(float centerX, float centerY, float radius) {
-    int num_segments = 100;
-    glBegin(GL_TRIANGLE_FAN);
-    glVertex2f(centerX, centerY);
-    for (int i = 0; i <= num_segments; i++) {
-        float theta = 2.0f * 3.1415926f * float(i) / float(num_segments);
-        float x = radius * cosf(theta);
-        float y = radius * sinf(theta);
-        glVertex2f(x + centerX, y + centerY);
+//float CarX = 18.0f; // Start the car from the right side of the screen
+
+float CarX = 19.0f; // Start the car from the right side just within the frame
+void moveCar(float variable) {
+    glPushMatrix();
+    glTranslatef(variable, 0.0f, 0.0f);  // Move the boat along the X-axis
+    Car();  // Call the boat drawing function
+    glPopMatrix();
+}
+void update(int value) {
+    CarX -= 0.06f;  // Move the car to the left
+
+    // If the car moves beyond the left side of the frame
+    if (CarX < -17.0f) {  // Reset based on the car's width (approximately 5 units)
+        CarX = 19.0f;    // Reset the car to just outside the right side
     }
-    glEnd();
+
+    glutPostRedisplay();  // Redisplay the scene
+    glutTimerFunc(16, update, 0);  // Call update again after 16 ms
 }
 void footpath()
 {
@@ -250,6 +270,7 @@ void underground_light()
 }
 void Metro()
 {
+
      glBegin(GL_POLYGON);
 
 	glColor3ub(255,255,255);
@@ -272,14 +293,49 @@ void Metro()
 	glEnd();
 
 	glBegin(GL_LINES);
-	{
+
 	    glLineWidth(2.0);
 	    glColor3ub(0,0,0);
 	     glVertex2f(5,2.21);//V5
 	glVertex2f(5,0.22);//W5
 	glEnd();
 
+	glBegin(GL_POLYGON);
+
+	glColor3ub(167,199,203);
+	glVertex2f(1.11,2);//C4
+	glVertex2f(4.13,2);//E4
+	glVertex2f(4.12,1.37);//F4
+	glVertex2f(1.09,1.39);//G4
+
+	glEnd();
+
+	glBegin(GL_POLYGON);
+
+	glColor3ub(167,199,203);
+	glVertex2f(5.75,2);//H4
+	glVertex2f(8.5,2);//I4
+	glVertex2f(8.53,1.35);//J4
+	glVertex2f(5.74,1.36);//K4
+	glEnd();
+
+
 }
+float metroX = 0.0f;
+
+void updatemetro(int value) {
+    metroX += 0.05f;
+    if (metroX > 19.0f) {
+        metroX = -7.0f;
+    }
+    glutPostRedisplay();
+    glutTimerFunc(16, updatemetro, 0);
+}
+void moveMetro(float metrovariable) {
+    glPushMatrix();
+    glTranslatef(metrovariable, 0.0f, 0.0f);  // Move the boat along the X-axis
+    Metro();  // Call the boat drawing function
+    glPopMatrix();
 }
 void trainwindow()
 {
@@ -1048,11 +1104,13 @@ void display() {
     TrainLine();
     UndergroundWall();
     Road();
-    Car();
+    //Car();
+    moveCar(CarX);
     footpath();
     underground_light();
-    Metro();
-    trainwindow();
+    //Metro();
+    moveMetro(metroX);
+    //trainwindow();
     Sky();
     Home();
     Home2();
@@ -1079,6 +1137,8 @@ glutCreateWindow("Vertex, Primitive & Color");
 	glutDisplayFunc(display);
 	initGL();
 	gluOrtho2D(0,19,0,13);
+	glutTimerFunc(16, update, 0);
+	glutTimerFunc(16, updatemetro, 0);
 	glutMainLoop();
 	return 0;
 }
