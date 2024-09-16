@@ -437,13 +437,38 @@ void Sky()
 
 }
 //
+float boatX = 0.0f;
+void update(int value) {
+    boatX += 0.02f; // Increment the boat's position (adjust speed as needed)
+
+    // If the boat goes beyond the right side of the frame (assuming the frame width is 19 units)
+    if (boatX > 19.0f) {
+        boatX = -7.0f; // Reset boat position to the left side (adjust the value based on boat width)
+    }
+    // Redisplay the scene
+    glutPostRedisplay();
+
+    // Call update again after 16 milliseconds (~60 frames per second)
+    glutTimerFunc(16, update, 0);
+}
+  // Boat position along the X-axis
+
+// Function to move and render the boat
+void moveBoat(float xOffset) {
+    glPushMatrix();
+    glTranslatef(xOffset, 0.0f, 0.0f);  // Move the boat along the X-axis
+    boat();  // Call the boat drawing function
+    glPopMatrix();
+}
+
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
     River();
     Sky();
     Par();
     Road();
-    boat();
+    //boat();
+    moveBoat(boatX);
     Land();
     Tree();
     khar();
@@ -468,6 +493,7 @@ glutCreateWindow("Vertex, Primitive & Color");
 	glutDisplayFunc(display);
 	initGL();
 	gluOrtho2D(0,19,0,13);
+	glutTimerFunc(16, update, 0);
 	glutMainLoop();
 	return 0;
 }
